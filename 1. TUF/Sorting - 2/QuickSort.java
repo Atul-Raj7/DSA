@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Practice{
+public class QuickSort {
     static int partition(List<Integer> list, int low, int high){
         int pivot = list.get(low);
         int i = low;
@@ -43,3 +43,4 @@ public class Practice{
         System.out.println(list);
     } 
 }
+
