@@ -1,8 +1,8 @@
 {
     "java.project.sourcePaths": [
-        "DSA",
         "1. TUF/Sorting - 2",
         "1. TUF/Sorting - 1",
-        "1. TUF/Arrays/Easy"
+        "1. TUF/Arrays/Easy",
+        ""
     ]
 }
