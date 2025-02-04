@@ -1,41 +1,57 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Practice{
+ 
+        static ArrayList<Integer> lol(int arr1[], int arr2[]){
+            ArrayList<Integer> list = new ArrayList<>();
+            Arrays.sort(arr1);
+            Arrays.sort(arr2);
+            
+            int n1 = arr1.length;
+            int n2 = arr2.length;
+            int i = 0;
+            int j = 0;
 
-    static void quicksort(List<Integer> list, int low, int high){
-        if(low >= high) return;
-
-        int partition = partition(list, low, high);
-        quicksort(list, low, partition - 1);
-        quicksort(list, partition + 1, high);
-    }
-
-    static int partition(List<Integer> list, int low, int high){
-        int pivot = list.get(low);
-        int i = low;
-        int j = high;
-
-        while(i < j){
-            while(list.get(i) <= pivot && i < high) i++;
-            while(list.get(j) > pivot && j > low) j--;
-            int temp;
-            if(i < j){
-                temp = list.get(i);
-                list.set(i, list.get(j));
-                list.set(j, temp);
+            while(i < n1 && j < n2){
+                if(arr1[i] < arr2[j]){
+                    if(list.size() == 0 || list.get(list.size() - 1) != arr1[i]){
+                        list.add(arr1[i]);
+                        i++;
+                    }
+                }
+                else if(arr1[i] > arr2[j]){
+                    if(list.size() == 0 || list.get(list.size() - 1) != arr2[j]){
+                        list.add(arr2[i]);
+                        j++;
+                    }
+                }
+                else{
+                    if(list.size() == 0 || list.get(list.size() - 1) != arr1[i]){
+                        list.add(arr1[i]);
+                    }
+                    i++;
+                    j++;
+                }
             }
+            while(i < n1){
+                if(list.size() == 0 || list.get(list.size() - 1) != arr1[i]){
+                    list.add(arr1[i]);
+                    i++;
+                }
+            }
+            while(j < n2){
+                if(list.size() == 0 || list.get(list.size() - 1) != arr2[j]){
+                    list.add(arr2[j]);
+                    j++;
+                }
+            }
+
+            return list;
         }
-        int temp;
-        temp = list.get(j);
-        list.set(j, list.get(low));
-        list.set(low, temp);
-        return j;
-    }
+    
     public static void main(String[] args){
-        List<Integer> list = new ArrayList<>(Arrays.asList(20,14,56,3,9,47,85,90));
-        quicksort(list, 0 , list.size() - 1);
-        System.out.println(list);
+        int[] arr1 = {1,2,3,4,5,6,7,8,9,10};
+        int[] arr2 = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+        System.out.println(lol(arr1, arr2));
     }
 }
