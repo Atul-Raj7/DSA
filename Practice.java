@@ -1,57 +1,41 @@
-import java.util.*;
+import java.util.HashMap;
 
-public class Practice{
- 
-        static ArrayList<Integer> lol(int arr1[], int arr2[]){
-            ArrayList<Integer> list = new ArrayList<>();
-            Arrays.sort(arr1);
-            Arrays.sort(arr2);
-            
-            int n1 = arr1.length;
-            int n2 = arr2.length;
-            int i = 0;
-            int j = 0;
+public class Practice {
 
-            while(i < n1 && j < n2){
-                if(arr1[i] < arr2[j]){
-                    if(list.size() == 0 || list.get(list.size() - 1) != arr1[i]){
-                        list.add(arr1[i]);
-                        i++;
-                    }
-                }
-                else if(arr1[i] > arr2[j]){
-                    if(list.size() == 0 || list.get(list.size() - 1) != arr2[j]){
-                        list.add(arr2[i]);
-                        j++;
-                    }
-                }
-                else{
-                    if(list.size() == 0 || list.get(list.size() - 1) != arr1[i]){
-                        list.add(arr1[i]);
-                    }
-                    i++;
-                    j++;
-                }
-            }
-            while(i < n1){
-                if(list.size() == 0 || list.get(list.size() - 1) != arr1[i]){
-                    list.add(arr1[i]);
-                    i++;
-                }
-            }
-            while(j < n2){
-                if(list.size() == 0 || list.get(list.size() - 1) != arr2[j]){
-                    list.add(arr2[j]);
-                    j++;
-                }
+    static int longestSum(int a[], int k){
+        int maxLen = 0;
+        int sum = 0;
+        HashMap<Integer, Integer> preSumMap = new HashMap<>();
+        for(int i = 0; i < a.length; i++){
+            //check if the element at first or after summing it up, equals to k or not
+            sum += a[i];
+            // if yes, then update the maxLen
+            if(sum == k){
+                maxLen = Math.max(maxLen, i + 1); // i + 1 is b/c i is starting from 0
             }
 
-            return list;
+            //now, we have the the sum, in order to calculate the length we'll subtract it from k
+            int rem = sum - k;
+            //then we'll check what is the longest length of the subarray in map which can be called Reverse Engneering(Keeping count of the summation and its location so it's easy to find the longest sub array) 
+
+
+            //⚠️⚠️ in the map we'll put summation of subarray in place of it's <key> and array's index in <value>⚠️⚠️
+            // I still need to find why i is getting subtracted with preSumMap.get(rem)
+            if(preSumMap.containsKey(rem)){
+                int len = i - preSumMap.get(rem);
+                maxLen = Math.max(maxLen, len);
+            }
+
+            // update the map with new summations
+            if(!preSumMap.containsKey(sum)){
+                preSumMap.put(sum, i);
+            }
         }
-    
+        return maxLen;
+    }
     public static void main(String[] args){
-        int[] arr1 = {1,2,3,4,5,6,7,8,9,10};
-        int[] arr2 = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-        System.out.println(lol(arr1, arr2));
+        int arr[] = {5,5,4,9,2,2,2,2,1,1};
+        int k = 10;
+        System.out.println(longestSum(arr, k));
     }
 }

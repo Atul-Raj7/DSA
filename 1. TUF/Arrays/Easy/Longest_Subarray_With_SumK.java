@@ -1,5 +1,10 @@
 import java.util.HashMap;
 
+
+// Optimal ⚠️
+
+
+
 public class Longest_Subarray_With_SumK {
     //Better
     // TC = O(n*logn)
@@ -37,3 +42,8 @@ public class Longest_Subarray_With_SumK {
         System.out.println("The length of the longest subarray is: " + len);
     }
 }
+
+
+/*
+ * 04.02.2025 ✔️
+ */
