@@ -16,3 +16,7 @@ public class LinearSearch {
        System.out.println(searchInSorted(arr, a)); 
     }
 }
+
+/*
+ * 04.02.2025 ✔️
+ */

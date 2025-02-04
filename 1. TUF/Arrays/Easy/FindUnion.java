@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +13,9 @@ public class FindUnion {
      */
     public static ArrayList<Integer> findUnion(int a[], int b[]) {
         // add your code here
+        Arrays.sort(a);
+        Arrays.sort(b);
+
         int n1 = a.length;
         int n2 = b.length;
         int i = 0;
@@ -86,3 +90,6 @@ public static ArrayList<Integer> findUnion(int a[], int b[]) {
 }
 
 */
+/*
+ * 04.02.2025 ✔️
+ */
