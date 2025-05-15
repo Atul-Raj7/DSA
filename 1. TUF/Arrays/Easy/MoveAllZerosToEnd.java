@@ -1,4 +1,4 @@
-public class MoveAllZeros {
+public class MoveAllZerosToEnd {
     /*
         TC = O(n)
         Sc = O(1)
