@@ -1,4 +1,6 @@
-public class SortColors {
+// LC = 75
+
+public class Sort_0s_1s_2s{
 
     // Dutch National Flag Problem
     // TC = O(n)

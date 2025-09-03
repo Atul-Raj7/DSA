@@ -1,5 +1,7 @@
+// LC - 169
+
 import java.util.*;
-public class MaxElement {
+public class MajorityElement {
 
     // Moore's Voting Algorithm
     // TC = O(n)
